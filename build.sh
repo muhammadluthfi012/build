@@ -14,20 +14,13 @@ echo "[*] Install dependencies..."
 sudo xbps-install -Sy git make ncurses-devel dialog \
   squashfs-tools xorriso syslinux dracut
 
-echo "[*] Clone & build void-installer..."
-if [ ! -d "$HOME/void-installer" ]; then
-  git clone https://github.com/void-linux/void-installer.git ~/void-installer
-fi
-cd ~/void-installer
-make
-sudo make install
-cd ~
-
 echo "[*] Update /etc/os-release branding..."
 sudo tee /etc/os-release > /dev/null <<EOF
 NAME="SiYunOS"
 ID=siyunos
+ID_LIKE=void
 PRETTY_NAME="SiYunOS (Void based)"
+VERSION="1.0"
 EOF
 
 echo "[*] Create live user..."
